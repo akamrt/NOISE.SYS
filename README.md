@@ -1,6 +1,6 @@
 # NOISE.SYS // Jitter Matrix for Maya
 
-<a href="https://github.com/akamrt/NOISE.SYS/raw/main/assets/demo.gif"><img src="assets/demo.gif" width="100%" alt="NOISE.SYS Demo — Maya noise generator in action" /></a>
+<a href="https://github.com/akamrt/NOISE.SYS/raw/main/assets/demo.gif"><img src="assets/demo.gif" width="700" alt="NOISE.SYS Demo — click for full size" style="max-width:100%; border-radius:8px; border: 1px solid #222;" /></a>
 
 ### A non-destructive, multi-layered procedural noise generator for Autodesk Maya
 

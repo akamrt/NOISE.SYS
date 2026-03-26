@@ -8,6 +8,10 @@
 
 *[↑ Auto-Live preview in real-time]*
 
+<a href="https://github.com/akamrt/NOISE.SYS/raw/main/assets/oscilloscope.gif"><img src="assets/oscilloscope.gif" width="700" alt="NOISE.SYS — Live oscilloscope" style="max-width:100%; border-radius:8px; border:1px solid #222;" /></a>
+
+*[↑ Live oscilloscope — real-time waveform visualisation]*
+
 ### A non-destructive, multi-layered procedural noise generator for Autodesk Maya
 
 ---
@@ -100,13 +104,18 @@ One-click baking commits your noise to an **additive Maya Animation Layer** — 
 
 ```
 NOISE.SYS/
-├── noise_sys_terminal.py    # Main script
-├── README.md                # This file
-├── LICENSE                  # MIT License
+├── noise_sys_terminal.py       # Main script
+├── README.md                   # This file
+├── LICENSE                     # MIT License
 └── assets/
-    ├── demo.gif             # Real demo (here's what you're getting)
-    ├── hero.png             # Hero thumbnail
-    └── banner.png           # X/Twitter banner
+    ├── demo.gif                # Full walkthrough demo
+    ├── demo-edits.gif          # Edit workflow demo
+    ├── oscilloscope.gif        # Live oscilloscope animation
+    ├── oscilloscope-demo.png   # Oscilloscope UI screenshot
+    ├── nondestructive-baking.png # Non-destructive workflow
+    ├── hero-thumb.png          # Hero thumbnail
+    ├── banner.png              # X/Twitter banner
+    └── gumroad-cover-v4.png    # Gumroad listing cover
 ```
 
 ---

@@ -13,7 +13,7 @@ Stop keyframing camera shake by hand.
 ---
 
 ## COVER IMAGE
-[Upload: assets/hero.png — 16:9 screenshot showing NOISE.SYS UI + Maya viewport]
+Upload: `gumroad-cover-v4.png` (from assets folder)
 
 ---
 
@@ -22,6 +22,20 @@ Stop keyframing camera shake by hand.
 Add complex, organic jitter, vibration, and camera shake to any object in Maya instantly. **NOISE.SYS** is a powerful procedural animation tool wrapped in a custom, high-performance terminal UI.
 
 Unlike traditional noise scripts that overwrite your keyframes or break referenced rigs, NOISE.SYS uses a custom additive node network. Your original keyframes remain untouched, and the procedural noise is added seamlessly on top.
+
+---
+
+## SEE IT IN ACTION
+
+![NOISE.SYS — Full tool walkthrough](https://github.com/akamrt/NOISE.SYS/raw/main/assets/demo-edits.gif)
+
+*Full walkthrough — Auto-Live preview, oscilloscope, baking & more*
+
+---
+
+![NOISE.SYS — Auto-Live demo](https://github.com/akamrt/NOISE.SYS/raw/main/assets/demo.gif)
+
+*Auto-Live preview — watch the viewport react in real-time*
 
 ---
 

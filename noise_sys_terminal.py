@@ -329,7 +329,9 @@ class NoiseTypeSelector(QtWidgets.QWidget):
             btn = QtWidgets.QPushButton(t)
             btn.setFixedHeight(16)
             btn.setStyleSheet(self._btn_style(False))
-            btn.clicked.connect(lambda checked, nt=t: self._select(nt))
+            # Use factory to capture nt value per-iteration (avoids late-binding closure bug)
+            def make_handler(nt): return lambda _: self._select(nt)
+            btn.clicked.connect(make_handler(t))
             lay.addWidget(btn)
             self._buttons[t] = btn
         self._buttons['SINE'].setStyleSheet(self._btn_style(True))
@@ -826,9 +828,9 @@ class NoiseSysWindow(QtWidgets.QMainWindow):
                 offset = lyr['offset']
                 ntype = lyr['type']
                 if ntype == 'SQUARE': s = f" ((sin(time * {freq} + {offset}) >= 0 ? 1.0 : -1.0) * {amp})"
-                elif ntype == 'TRIANGLE': s = f" ((2.0 / 3.14159) * asin(sin(time * {freq} + {offset})) * {amp})"
-                elif ntype == 'SAW': s = f" (2.0 * (((time * {freq} + {offset}) / (2.0 * 3.14159)) - floor(0.5 + t / (2 * 3.14159))) * {amp})"
-                elif ntype == 'PERLIN': s = f" (noise(time * {freq} + {offset}) * {amp})"
+                elif ntype == 'TRIANGLE': s = f" (2.0 * abs(2.0 * ((time * {freq} + {offset}) / 6.28318 - floor(0.5 + (time * {freq} + {offset}) / 6.28318)) - 0.5) * {amp})"
+                elif ntype == 'SAW': s = f" (2.0 * ((time * {freq} + {offset}) / 6.28318 - floor(0.5 + (time * {freq} + {offset}) / 6.28318)) * {amp})"
+                elif ntype == 'PERLIN': s = f" ((sin(time * {freq} + {offset}) + sin(2.0 * (time * {freq} + {offset})) * 0.5 + sin(4.0 * (time * {freq} + {offset})) * 0.25) * 0.44 * {amp})"
                 elif ntype == 'RANDOM': s = f" (rand(-1.0, 1.0) * {amp})"
                 else: s = f" (sin(time * {freq} + {offset}) * {amp})"
                 math_str += f" + {s}"

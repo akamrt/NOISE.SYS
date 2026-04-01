@@ -1,62 +1,54 @@
-# NOISE.SYS // Jitter Matrix for Maya
+# 🗣️ NOISE.SYS
 
-<a href="https://github.com/akamrt/NOISE.SYS/raw/main/assets/demo-edits.gif"><img src="assets/demo-edits.gif" width="700" alt="NOISE.SYS — Full tool showcase" style="max-width:100%; border-radius:8px; border: 1px solid #222;" /></a>
+<div align="center">
 
-*[↑ Full walkthrough — Auto-Live, oscilloscope, baking & more]*
+![NOISE.SYS — Jitter Matrix for Maya](https://raw.githubusercontent.com/akamrt/NOISE.SYS/main/assets/banner.png)
 
-<a href="https://github.com/akamrt/NOISE.SYS/raw/main/assets/demo.gif"><img src="assets/demo.gif" width="700" alt="NOISE.SYS — Auto-Live preview" style="max-width:100%; border-radius:8px; border: 1px solid #222;" /></a>
+**A non-destructive, multi-layered procedural noise generator for Autodesk Maya**
 
-*[↑ Auto-Live preview in real-time]*
+*[Stop keyframing camera shake by hand.]*
 
-<a href="https://github.com/akamrt/NOISE.SYS/raw/main/assets/oscilloscope.gif"><img src="assets/oscilloscope.gif" width="700" alt="NOISE.SYS — Live oscilloscope" style="max-width:100%; border-radius:8px; border:1px solid #222;" /></a>
+<a href="https://github.com/akamrt/NOISE.SYS/raw/main/assets/demo.gif">
+  <img src="https://github.com/akamrt/NOISE.SYS/raw/main/assets/demo.gif" width="700" alt="NOISE.SYS — Auto-Live preview" style="max-width:100%; border-radius:8px; border:1px solid #1a1a2e;" />
+</a>
+*[↑ Auto-Live preview — real-time viewport feedback as you drag sliders]*
 
+<a href="https://github.com/akamrt/NOISE.SYS/raw/main/assets/demo-edits.gif">
+  <img src="https://github.com/akamrt/NOISE.SYS/raw/main/assets/demo-edits.gif" width="700" alt="NOISE.SYS — Full walkthrough" style="max-width:100%; border-radius:8px; border:1px solid #1a1a2e;" />
+</a>
+*[↑ Full walkthrough — oscilloscope, baking & more]*
+
+<a href="https://github.com/akamrt/NOISE.SYS/raw/main/assets/oscilloscope.gif">
+  <img src="https://github.com/akamrt/NOISE.SYS/raw/main/assets/oscilloscope.gif" width="700" alt="NOISE.SYS — Live oscilloscope" style="max-width:100%; border-radius:8px; border:1px solid #1a1a2e;" />
+</a>
 *[↑ Live oscilloscope — real-time waveform visualisation]*
 
-### A non-destructive, multi-layered procedural noise generator for Autodesk Maya
-
----
-
-> *"Stop keyframing camera shake by hand."*
-
-**NOISE.SYS** is a powerful procedural animation tool wrapped in a custom, high-performance terminal UI. Add complex, organic jitter, vibration, and camera shake to any object in Maya instantly — without touching your base animation.
+</div>
 
 ---
 
 ## ✨ Features
 
-### 🖥️ Marathon-Inspired Terminal UI
-Custom dark terminal interface with a live 60fps oscilloscope waveform visualizer. Stays on top and responds instantly as you tweak parameters.
-
-### 🛡️ Non-Destructive by Design
-Works on **referenced rigs**. Your original keyframes are never touched. Noise is routed through a `plusMinusAverage` node network and added on top.
-
-### 🎛️ Multi-Layer Noise Stacking
-Stack multiple noise layers on a single axis:
-- **SINE** — Smooth oscillation
-- **SQUARE** — Hard on/off pulses
-- **TRIANGLE** — Linear rise and fall
-- **SAW** — Ramp-up waves
-- **PERLIN** — Organic continuous noise
-- **RANDOM** — Chaotic jitter
-
-### ⚡ Auto-Live Preview
-See the noise affect your object in the viewport **in real-time** as you drag any slider. No clicking "apply".
-
-### 💾 Preset System
-Save favourite camera shakes and mechanical vibrations to local JSON preferences. Load across scenes instantly.
-
-### 🍰 AnimLayer Baking
-One-click baking commits your noise to an **additive Maya Animation Layer** — keeping your base timeline clean.
+| | | |
+|:---|:---|:---|
+| 🖥️ **Marathon Terminal UI** | Custom dark terminal with live 60fps oscilloscope waveform visualizer | |
+| 🛡️ **Non-Destructive** | Works on referenced rigs. Original keyframes untouched — noise routed via `plusMinusAverage` node network | |
+| ⚡ **Auto-Live Preview** | See noise in the viewport **in real-time** as you drag any slider — no apply button needed | |
+| 🎛️ **Multi-Layer Stacking** | Stack multiple noise layers per axis — SINE, SQUARE, TRIANGLE, SAW, PERLIN, RANDOM | |
+| 💾 **Preset System** | Save and load favourite camera shakes / vibrations from local JSON preferences | |
+| 🍰 **AnimLayer Baking** | One-click bake to an additive Maya Animation Layer — keeps base timeline clean | |
+| 🔄 **Full Revert** | Remove all noise and restore original animation instantly | |
+| 🎮 **6 Noise Types** | SINE · SQUARE · TRIANGLE · SAW · PERLIN · RANDOM | |
 
 ---
 
 ## 📦 Compatibility
 
-| Maya Version | Support |
-|-------------|---------|
+| Maya Version | Status |
+|:------------|:------:|
 | Maya 2022 | ✅ |
 | Maya 2023 | ✅ |
-| Maya 2024 | ✅ PySide2 + PySide6 |
+| Maya 2024 | ✅ |
 | Maya 2025 | ✅ |
 
 ---
@@ -75,27 +67,35 @@ One-click baking commits your noise to an **additive Maya Animation Layer** — 
 
 ## 🎮 Usage
 
-1. **Select** the object or camera you want to affect
-2. The UI automatically detects your **TARGET**
-3. **Unmute** the channels you want to affect (e.g. `Tx`, `Ty`, `Rz` for camera shake)
-4. Click **+LAY** to add noise layers
-5. Choose noise **Type** and adjust **Amp** / **Freq**
-6. Enable **[X] AUTO-LIVE** for real-time viewport preview
-7. Click **[BAKE TO LAYER]** when happy
+```python
+# 1. Select the object or camera you want to affect
+# 2. The UI auto-detects your TARGET
+# 3. Unmute the channels you want to affect (e.g. Tx, Ty, Rz for camera shake)
+# 4. Click +LAY to add a noise layer
+# 5. Choose Type + adjust Amp / Freq
+# 6. Enable [X] AUTO-LIVE for real-time viewport preview
+# 7. Click [BAKE TO LAYER] when happy
+```
+
+**Quick example — camera shake on `tx`, `ty`, `rz`:**
+```python
+import noise_sys_terminal as ns
+# UI launches automatically — just select your camera and go
+```
 
 ---
 
 ## 🎛️ UI Overview
 
 | Element | Function |
-|---------|----------|
-| **OSCILLOSCOPE** | Live waveform showing all active noise layers |
-| **GLOBAL_MODS** | Master amplitude and frequency multiplier |
-| **Tx / Ty / Tz** | Translate X/Y/Z noise channels |
-| **Rx / Ry / Rz** | Rotate X/Y/Z noise channels |
-| **+LAY** | Add a new noise layer to a channel |
-| **[BAKE TO BASE]** | Commit noise directly to keyframes |
-| **[BAKE TO LAYER]** | Commit noise to an additive Animation Layer |
+|:---|:---|
+| **OSCILLOSCOPE** | Live waveform showing all active noise layers combined |
+| **GLOBAL_MODS** | Master amplitude and frequency multiplier for all layers |
+| **Tx / Ty / Tz** | Translate X/Y/Z noise channels — unmute to activate |
+| **Rx / Ry / Rz** | Rotate X/Y/Z noise channels — unmute to activate |
+| **+LAY** | Add a new noise layer to the active channel |
+| **[BAKE TO BASE]** | Commit noise directly into base keyframes |
+| **[BAKE TO LAYER]** | Commit noise to an additive Maya Animation Layer |
 | **[ REVERT_TARGET_SYSTEM ]** | Remove all noise, restore original animation |
 
 ---
@@ -110,12 +110,12 @@ NOISE.SYS/
 └── assets/
     ├── demo.gif                # Full walkthrough demo
     ├── demo-edits.gif          # Edit workflow demo
-    ├── oscilloscope.gif        # Live oscilloscope animation
+    ├── oscilloscope.gif         # Live oscilloscope animation
     ├── oscilloscope-demo.png   # Oscilloscope UI screenshot
-    ├── nondestructive-baking.png # Non-destructive workflow
-    ├── hero-thumb.png          # Hero thumbnail
+    ├── nondestructive-baking.png
+    ├── hero-thumb.png
     ├── banner.png              # X/Twitter banner
-    └── gumroad-cover-v4.png    # Gumroad listing cover
+    └── gumroad-cover-v4.png
 ```
 
 ---

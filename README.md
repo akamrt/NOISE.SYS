@@ -29,16 +29,19 @@
 
 ## ✨ Features
 
-| | | |
-|:---|:---|:---|
-| 🖥️ **Marathon Terminal UI** | Custom dark terminal with live 60fps oscilloscope waveform visualizer | |
-| 🛡️ **Non-Destructive** | Works on referenced rigs. Original keyframes untouched — noise routed via `plusMinusAverage` node network | |
-| ⚡ **Auto-Live Preview** | See noise in the viewport **in real-time** as you drag any slider — no apply button needed | |
-| 🎛️ **Multi-Layer Stacking** | Stack multiple noise layers per axis — SINE, SQUARE, TRIANGLE, SAW, PERLIN, RANDOM | |
-| 💾 **Preset System** | Save and load favourite camera shakes / vibrations from local JSON preferences | |
-| 🍰 **AnimLayer Baking** | One-click bake to an additive Maya Animation Layer — keeps base timeline clean | |
-| 🔄 **Full Revert** | Remove all noise and restore original animation instantly | |
-| 🎮 **6 Noise Types** | SINE · SQUARE · TRIANGLE · SAW · PERLIN · RANDOM | |
+| | |
+|:---|:---|
+| 🖥️ **Marathon Terminal UI** | Custom dark terminal with a live oscilloscope and a 3D pyramid preview |
+| 🛡️ **Non-Destructive** | Works on referenced rigs. Original keyframes untouched — noise routed through a `plusMinusAverage` node network |
+| ⚡ **Fast Auto-Live Preview** | Noise lives on native animation curves (no expressions), so viewport playback stays fast and cached-playback friendly |
+| 🎯 **Multiple Targets, Own Seeds** | Drive any number of objects from one setup — each gets its own seed so nothing moves in lockstep |
+| 🎛️ **Multi-Layer Stacking** | Stack multiple noise layers per axis — SINE, SQUARE, TRIANGLE, SAW, PERLIN, RANDOM |
+| 🎲 **Repeatable Seeds** | Same seed, same motion, every session. Reroll one target or all of them |
+| 🔢 **Type-In Values & Raisable Caps** | Type exact values, or Shift-drag past a slider's end to raise its maximum |
+| 🍰 **Bake Exactly What You See** | One click bakes the live result to base keys or an additive Animation Layer, reports the difference from the live view, and removes every helper node |
+| 🔺 **3D Preview** | Pyramid with selectable tip axis and pivot, a styled motion trail, orbit / pan / zoom |
+| 💾 **Preset System** | Save and load favourite camera shakes / vibrations from local JSON preferences |
+| 🔄 **Full Revert** | Remove all noise and restore original animation instantly |
 
 ---
 
@@ -68,19 +71,12 @@
 ## 🎮 Usage
 
 ```python
-# 1. Select the object or camera you want to affect
-# 2. The UI auto-detects your TARGET
-# 3. Unmute the channels you want to affect (e.g. Tx, Ty, Rz for camera shake)
-# 4. Click +LAY to add a noise layer
-# 5. Choose Type + adjust Amp / Freq
-# 6. Enable [X] AUTO-LIVE for real-time viewport preview
-# 7. Click [BAKE TO LAYER] when happy
-```
-
-**Quick example — camera shake on `tx`, `ty`, `rz`:**
-```python
-import noise_sys_terminal as ns
-# UI launches automatically — just select your camera and go
+# 1. Select one or more objects (controls, cameras...) and press <<< SET
+#    Each target gets its own seed so they move independently
+# 2. Unmute the channels you want to affect (e.g. Tx, Ty, Rz for camera shake)
+# 3. Add noise layers, choose a type, adjust Amp / Freq / Offset (drag or type values)
+# 4. Leave [X] AUTO-LIVE on for real-time viewport preview
+# 5. Click [ BAKE_TO_LAYER ] or [ BAKE_TO_BASE ] when happy — it bakes all targets and cleans up
 ```
 
 ---
@@ -89,14 +85,17 @@ import noise_sys_terminal as ns
 
 | Element | Function |
 |:---|:---|
-| **OSCILLOSCOPE** | Live waveform showing all active noise layers combined |
+| **TARGETS** | `<<< SET` replaces the list with the selection, `+ ADD` appends, `REROLL ALL` gives every target a new seed. Each row: click the name to select it, edit its seed, `RND` to reroll, `X` to remove |
+| **Preview controls** | `BOTH / WAVE / 3D` view, `T- T+` time zoom, `A- A+` height zoom, `1:1` reset, `NORM` fit to view, `PAUSE`, `3D OPT` |
+| **OSCILLOSCOPE** | Waveform of all active layers. Wheel: zoom time · Shift+wheel: zoom height · double-click: reset |
+| **3D PYRAMID** | Noise applied to a pyramid at the playhead. Left-drag orbit · middle or Shift+left-drag pan · wheel or right-drag zoom · double-click or F reset |
+| **3D OPT** | Tip axis (±X/±Y/±Z), pivot (base/center/tip), trail on/off, colour, length in frames, fade, thickness, taper, line style |
 | **GLOBAL_MODS** | Master amplitude and frequency multiplier for all layers |
-| **Tx / Ty / Tz** | Translate X/Y/Z noise channels — unmute to activate |
-| **Rx / Ry / Rz** | Rotate X/Y/Z noise channels — unmute to activate |
-| **+LAY** | Add a new noise layer to the active channel |
-| **[BAKE TO BASE]** | Commit noise directly into base keyframes |
-| **[BAKE TO LAYER]** | Commit noise to an additive Maya Animation Layer |
-| **[ REVERT_TARGET_SYSTEM ]** | Remove all noise, restore original animation |
+| **Tx / Ty / Tz · Rx / Ry / Rz** | Translate and rotate noise channels — unmute to activate |
+| **Sliders** | Drag, or type in the value box. Shift-drag past the end raises the cap; double-click resets it |
+| **[ BAKE_TO_BASE ]** | Bake the live result into base keyframes on every target |
+| **[ BAKE_TO_LAYER ]** | Bake noise into an additive Animation Layer per target (re-baking replaces it) |
+| **REVERT_TARGET_SYSTEM** | Remove all noise from every target, restore original animation |
 
 ---
 
